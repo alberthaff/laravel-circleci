@@ -6,9 +6,9 @@ ARG DOCKERIZE_VERSION=v0.3.0
 RUN apt update && apt install -y wget libxml2-dev libzip-dev --allow-remove-essential
 # Add reqired PHP extensions
 RUN docker-php-ext-install pdo pdo_mysql
-RUN pecl install xdebug mailparse redis zip
+RUN pecl install xdebug mailparse redis zip gd
 # Enable required PHP extensions
-RUN docker-php-ext-enable xdebug mailparse redis zip pdo_mysql
+RUN docker-php-ext-enable xdebug mailparse redis zip pdo_mysql gd
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 # Install Dockerize
