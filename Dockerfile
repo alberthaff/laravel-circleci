@@ -3,10 +3,10 @@ FROM library/php:7.3.11-cli-stretch
 ARG DOCKERIZE_VERSION=v0.3.0
 
 # Install required tools
-RUN apt update && apt install -y wget libxml2-dev libzip-dev --allow-remove-essential
+RUN apt update && apt install -y wget libxml2-dev libzip-dev --allow-remove-essential libpng-dev
 # Add reqired PHP extensions
-RUN docker-php-ext-install pdo pdo_mysql
-RUN pecl install xdebug mailparse redis zip gd
+RUN docker-php-ext-install pdo pdo_mysql gd
+RUN pecl install xdebug mailparse redis zip
 # Enable required PHP extensions
 RUN docker-php-ext-enable xdebug mailparse redis zip pdo_mysql gd
 # Install Composer
